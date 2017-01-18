@@ -1,0 +1,257 @@
+﻿Release Notes - SAME70 Software Package
+------------------------------------------
+Release version: 1.5
+Release date: 2015-11
+
+1 Overview
+----------
+The SAME70 Software Package consists of SAME70 micro-controller
+drivers, software services & libraries, and demonstration applications.
+
+Each software module is provided with full source code, example of usage, rich
+html documentation and ready-to-use projects for the GNU GCC, IAR EWARM and
+MDK ARM μVision compilers.
+
+
+2 Downloading and Installing
+----------------------------
+
+2.1 ATMEL STUDIO SOFTWARE PACKAGE
+---------------------
+This installer contains SAME70 softpack 1.5 software package support for Atmel Studio 6.2/7.0.
+All examples contains studio project file (_6_2.cproj) and open directly in ATMEL studio 6.2 IDE interface.
+All examples contains studio project file (_7_0.cproj) and open directly in ATMEL studio 7.0 IDE interface.
+
+It support JLINK and Atmel Embedded Debugger (EDBG) probe for on-board debugging. The EDBG is a composite USB device of three interfaces.
+Note: If user use EDBG to debug, please unplug JLINK and power off/on the target board.
+
+2.2 GNU ARM embedded SOFTWARE PACKAGE
+---------------------
+Software package for GNU Tools for ARM Embedded Processors(later than V 4.9.3).
+The official linker of GNU tools is https://launchpad.net/gcc-arm-embedded/+download.
+
+Each example is delivered with a single Makefile. Compilation is launched
+using the following command:
+make
+
+Some extra parameters can be specified. CROSS_COMPILE parameter can be used
+to specify another tool-chain:
+make CROSS_COMPILE=arm-none-eabi-
+
+All default parameters defined in Makefile can be overridden through the
+command line:
+make TRACE_LEVEL=4
+
+The default target will compile the example for all available memory
+configurations (sram, flash). According to the memory configuration,
+the corresponding .lds file (located in libraries/libboard/resources_e70/gcc) is used
+during the link. The compilation can be limited to a single memory
+configuration specifying the memory as a target:
+make MEMORIES=sram
+
+GDB can be launched using command line. Several gdb commands shall be used
+to connect to the gdbserver, to initialize memories then load the application.
+These commands can be stored in a .gdb file. Some default .gdb files located in
+resources/gcc directory provide useful standard settings for AT91SAM Evaluation Kits.
+In order to simplify command line debugging using gdb, a makefile target sequentially
+starts the compilation then launch the debug session and load the application:
+make debug_sram
+
+Several additional requirements are mandatory before building this target:
+SAM-ICE gdbserver shall be started before.
+gdb tries to connect to gdbserver through the localhost:2331 port.
+This is the default with SAM-ICE gdbserver.
+
+
+2.3 IAR SOFTWARE PACKAGE
+---------------------
+SAME70 Software Package for EWARM requires an installation of IAR Systems Embedded Workbench
+for ARM version later than 7.30.x
+
+The SAME70 Software Package for EWARM will change the following components of your existing
+IAR EWARM 7.30.x installation:
+- Example projects for SAME70-xPlained board
+- C-SPY device description files
+- Device selection files
+- Flash loader for SAME70 device
+- Linker scripts
+
+After installation, the examples will be accessible under the "Example Projects" item in the
+IAR Information Center for ARM (show at EWARM startup or with "Help -> Information Center").
+Choose "Atmel" from the manufacturer list, then choose SAME70-xPlained board.
+The list of supported examples will be displayed so you can easily clone the ones you are
+interested in.
+
+In addition, the examples come with HTML documentation explaining what they do and how to
+use them. It will be located in the "arm/examples/Atmel/SAME70_Xplained/documentation"
+subdirectory of your EWARM installation folder.
+
+The EWARM C-SPY debugger offers a particularly useful feature: in the Registers Window, the
+user can see the contents of peripheral registers in the chip. This functionality requires Device
+Description Files which provide the register mapping information for each board.
+Installing the SAME70 Software Package for EWARM will add the .ddf files for SAME70 Atmel
+micro-controllers.
+The device description file is included in the SAME70 Software Package for EWARM.
+
+
+2.4 KEIL MDK μVision SOFTWARE PACKAGE
+---------------------
+SAME70 Software Package for μVision requires an installation of μVision for ARM MDK version later than 5.12.
+Please install SAM-E_DFP 1.0.0 package to support SAME devices in IDE.
+Examples can be compiled and debugged using μVision IDE.
+
+
+2.4 SEGGER SAM-ICE driver
+---------------------
+Install JLinkARM driver version later than V4.94 or later to get support for SAME70 chip with SAM-ICE probe.
+The official link for SEGGER is https://www.segger.com/jlink-software.html
+
+Note: Recommend to install JLINK driver version later than V4.97c to get fix in debugger step mode.
+
+
+3 Contents
+-----------
+
+This release of SAME70 Software Package contains the following examples for GNU, IAR EWARM
+and ARM MDK μVision tool-chains:
+
+- getting-started (IAR/GCC/Atmel Studio/MDK)
+-
+- afe12_dma (IAR/GCC/Atmel Studio/MDK)
+- afe_temp_sensor (IAR/GCC/Atmel Studio/MDK)
+- eefc_pgm (IAR/GCC/Atmel Studio/MDK)
+- fft_demo (IAR)
+- lcd (IAR/GCC/Atmel Studio/MDK)
+- loader (IAR/GCC/Atmel Studio/MDK)
+- low_power (IAR/GCC/Atmel Studio/MDK)
+- mcan (IAR/GCC/Atmel Studio/MDK)
+- periph_protect (IAR/GCC/Atmel Studio/MDK)
+- pmc_clock_switching (IAR/GCC/Atmel Studio/MDK)
+- pwm (IAR/GCC/Atmel Studio/MDK)
+- mpu (IAR/GCC/Atmel Studio/MDK)
+- tcm (IAR/GCC/Atmel Studio/MDK)
+- spi (IAR/GCC/Atmel Studio/MDK)
+- sdram (IAR-JLINK-JTAG only/GCC/Atmel Studio/MDK)
+- rtt (IAR/GCC/Atmel Studio/MDK)
+- rtc (IAR/GCC/Atmel Studio/MDK)
+- tc_capture_waveform (IAR/GCC/Atmel Studio/MDK)
+- trng (IAR/GCC/Atmel Studio/MDK)
+- twi_eeprom (IAR/GCC/Atmel Studio/MDK)
+- twi_slave (IAR/GCC/Atmel Studio/MDK)
+- uart (IAR/GCC/Atmel Studio/MDK)
+- usart_hw_handshaking (IAR/GCC/Atmel Studio/MDK)
+- usart_spi (IAR/GCC/Atmel Studio/MDK)
+- usart_rs485 (IAR/GCC/Atmel Studio/MDK)
+- usart_lon (IAR/GCC/Atmel Studio/MDK)
+- usart_iso7816 (IAR/GCC/Atmel Studio/MDK)
+- usart (IAR/GCC/Atmel Studio/MDK)
+- wdt (IAR/GCC/Atmel Studio/MDK)
+- xdma (IAR/GCC/Atmel Studio/MDK)
+
+- aes (IAR/GCC/Atmel Studio/MDK)
+- icm (IAR/GCC/Atmel Studio/MDK)
+
+- gmac (IAR/GCC/Atmel Studio/MDK)
+- gmac_lwip (IAR/GCC/Atmel Studio/MDK)
+- gmac_uip_helloworld (IAR/GCC/Atmel Studio/MDK)
+- gmac_uip_telnetd (IAR/GCC/Atmel Studio/MDK)
+- gmac_uip_webserver (IAR/GCC/Atmel Studio/MDK)
+
+- hsmci_sdcard_fatfs (IAR/GCC/Atmel Studio/MDK)
+- hsmci_sdcard (IAR/GCC/Atmel Studio/MDK)
+- hsmci_multimedia_card (IAR/GCC/Atmel Studio/MDK)
+- hsmci_sdio (IAR/GCC/Atmel Studio/MDK)
+
+- usb_audio_looprec (IAR/GCC/Atmel Studio/MDK)
+- usb_core (IAR/GCC/Atmel Studio/MDK)
+- usb_cdc (IAR/GCC/Atmel Studio/MDK)
+- usb_eem (IAR/GCC/Atmel Studio/MDK)
+- usb_hid_keyboard (IAR/GCC/Atmel Studio/MDK)
+- usb_hid_mouse (IAR/GCC/Atmel Studio/MDK)
+- usb_hid_transfer (IAR/GCC/Atmel Studio/MDK)
+- usb_hid_msd (IAR/GCC/Atmel Studio/MDK)
+- usb_iad_cdc_hid (IAR/GCC/Atmel Studio/MDK)
+- usb_iad_cdc_cdc (IAR/GCC/Atmel Studio/MDK)
+- usb_iad_cdc_msd (IAR/GCC/Atmel Studio/MDK)
+- usb_massstorage (IAR/GCC/Atmel Studio/MDK)
+- usb_video (IAR/GCC/Atmel Studio/MDK)
+- usb_video_gray (IAR/GCC/Atmel Studio/MDK)
+
+4 New Feature
+---------------------
+- Header files: packaged all E70/S70/V71 header files
+- Add project files which support Studio 7.0
+- Add support for eMMC card in 4bit mode
+- USB Mass-storage examples passed USB-CV tests.
+
+5 Bug fix and improvement
+---------------------
+- CMSIS update from version r4p3 to r4p4
+- Improvement of USB device examples for exception handling
+
+6 History
+---------------------
+
+1.5
+--------------
+- no updates
+
+1.5 rc7
+--------------
+- clean most of the compilation warnings.
+- Fix some issues for IAR InfoCenter
+
+1.5 rc6
+--------------
+- clean code according to coding rules.
+- clean the compilation warnings.
+
+1.5 rc5
+--------------
+- fix printf issues and compilation errors in rc4.
+- usb_video example is tested using image sensor OV2643/OV5640/OV7740.
+
+1.5 rc4
+--------------
+- New example: usb_audio_looprec
+- Header files: packaged all E70/S70/V71 header files
+- Add project files which support Studio 7.0
+- Add support for eMMC card in 4-bit mode
+- Bug fix: Cache coherency issue of some examples
+- Bug fix: compilation errors of some examples
+- Improvement of USB device examples for exception handling
+
+1.5 rc3
+--------------
+- CMSIS update from version r4p3 to r4p4
+
+1.5 rc2
+--------------
+- First release!
+
+
+7 Copyright (c) 2014, Atmel Corporation All rights reserved.
+------------------------------------------------------------
+
+* Redistribution and use in source and binary forms, with or without
+* modification, are permitted provided that the following conditions are met:
+*
+* - Redistributions of source code must retain the above copyright notice,
+* this list of conditions and the disclaimer below.
+*
+* Atmel's name may not be used to endorse or promote products derived from
+* this software without specific prior written permission.
+*
+* DISCLAIMER: THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR
+* IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+* DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR ANY DIRECT, INDIRECT,
+* INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+* LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+* OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+* LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+* NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
